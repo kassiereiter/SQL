@@ -1,4 +1,5 @@
-/* In this project, you’re going to make your own table with some small set of “famous people”,
+/* 
+In this project, you’re going to make your own table with some small set of “famous people”,
 then make more tables about things they do and join those to create nice human readable lists.
 
 For example, here are types of famous people and the questions your data could answer:
@@ -6,9 +7,10 @@ For example, here are types of famous people and the questions your data could a
 Movie stars: What movies are they in? Are they married to each other?
 Singers: What songs did they write? Where are they from?
 Authors: What books did they write?
-Fictional characters: How are they related to other characters? What books do they show up in? */
+Fictional characters: How are they related to other characters? What books do they show up in? 
+*/
 
--- CREATE table of moviestars and table of movies
+--CREATE table of moviestars and table of movies
 
 CREATE TABLE moviestars (id INTEGER PRIMARY KEY, name TEXT, age INTEGER, spouse_id INTEGER);
 
@@ -31,13 +33,13 @@ INSERT INTO movies (title, actor_id) VALUES ("Deadpool", 4);
 INSERT INTO movies (title, actor_id) VALUES ("Moneyball", 2);
 INSERT INTO movies (title, actor_id) VALUES ("Just Go With It", 1);
 
--- JOIN tables to see which moviestars are in which movies
+--JOIN tables to see which moviestars are in which movies
 
 SELECT moviestars.name AS Actor, movies.title AS Movie FROM moviestars
     JOIN movies
     ON moviestars.id = movies.actor_id;
     
--- JOIN tables to see which moviestars are married to each other
+--JOIN tables to see which moviestars are married to each other
 
 SELECT a.name AS Actor, b.name AS Spouse FROM moviestars
     JOIN moviestars a
