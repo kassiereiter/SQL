@@ -1,0 +1,35 @@
+/*
+Create your own store! Your store should sell one type of things, like clothing or bikes, 
+whatever you want your store to specialize in. You should have a table for all the items 
+in your store, and at least 5 columns for the kind of data you think you'd need to store. 
+You should sell at least 15 items, and use select statements to order your items by price 
+and show at least one statistic about the items.
+*/
+
+--CREATE table
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, name TEXT, size TEXT, price INTEGER, department TEXT);
+INSERT INTO store VALUES (1, "Top", "Small", 9.99, "Women");
+INSERT INTO store VALUES (2, "Top", "Medium", 9.99, "Women");
+INSERT INTO store VALUES (3, "Top", "Large", 9.99, "Women");
+INSERT INTO store VALUES (4, "Pants", "Small", 15.99, "Women");
+INSERT INTO store VALUES (5, "Pants", "Medium", 15.99, "Women");
+INSERT INTO store VALUES (6, "Pants", "Large", 15.99, "Women");
+INSERT INTO store VALUES (7, "Top", "Small", 8.99, "Men");
+INSERT INTO store VALUES (8, "Top", "Medium", 8.99, "Men");
+INSERT INTO store VALUES (9, "Top", "Large", 8.99, "Men");
+INSERT INTO store VALUES (10, "Pants", "Small", 13.99, "Men");
+INSERT INTO store VALUES (11, "Pants", "Medium", 13.99, "Men");
+INSERT INTO store VALUES (12, "Pants", "Large", 13.99, "Men");
+INSERT INTO store VALUES (13, "Dress", "Small", 19.99, "Women");
+INSERT INTO store VALUES (14, "Dress", "Medium", 19.99, "Women");
+INSERT INTO store VALUES (15, "Dress", "Large", 19.99, "Women");
+
+--ORDER items by price
+
+SELECT * FROM store ORDER BY price;
+
+--Show at least one statistic about the items
+--I found the most expensive item in the store
+
+SELECT name, MAX(price) FROM store
