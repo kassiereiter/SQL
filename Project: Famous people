@@ -1,0 +1,46 @@
+/* In this project, you’re going to make your own table with some small set of “famous people”,
+then make more tables about things they do and join those to create nice human readable lists.
+
+For example, here are types of famous people and the questions your data could answer:
+
+Movie stars: What movies are they in? Are they married to each other?
+Singers: What songs did they write? Where are they from?
+Authors: What books did they write?
+Fictional characters: How are they related to other characters? What books do they show up in? */
+
+-- CREATE table of moviestars and table of movies
+
+CREATE TABLE moviestars (id INTEGER PRIMARY KEY, name TEXT, age INTEGER, spouse_id INTEGER);
+
+INSERT INTO moviestars (name,age, spouse_id) VALUES ("Jennifer Aniston", 53, NULL);
+INSERT INTO moviestars (name,age, spouse_id) VALUES ("Brad Pitt", 58, NULL);
+INSERT INTO moviestars (name,age, spouse_id) VALUES ("Blake Lively", 34, 4);
+INSERT INTO moviestars (name,age, spouse_id) VALUES ("Ryan Reynolds", 45, 3);
+INSERT INTO moviestars (name,age, spouse_id) VALUES ("Emily Blunt", 39, 6);
+INSERT INTO moviestars (name,age, spouse_id) VALUES ("John Krasinski", 42, 5);
+
+CREATE TABLE movies (id INTEGER, title TEXT, actor_id INTEGER);
+
+INSERT INTO movies (title, actor_id) VALUES ("Quiet Place", 5);
+INSERT INTO movies (title, actor_id) VALUES ("Quiet Place", 6);
+INSERT INTO movies (title, actor_id) VALUES ("13 Hours", 6);
+INSERT INTO movies (title, actor_id) VALUES ("Jungle Cruise", 5);
+INSERT INTO movies (title, actor_id) VALUES ("Mary Poppins", 5);
+INSERT INTO movies (title, actor_id) VALUES ("Age of Adeline", 3);
+INSERT INTO movies (title, actor_id) VALUES ("Deadpool", 4);
+INSERT INTO movies (title, actor_id) VALUES ("Moneyball", 2);
+INSERT INTO movies (title, actor_id) VALUES ("Just Go With It", 1);
+
+-- JOIN tables to see which moviestars are in which movies
+
+SELECT moviestars.name AS Actor, movies.title AS Movie FROM moviestars
+    JOIN movies
+    ON moviestars.id = movies.actor_id;
+    
+-- JOIN tables to see which moviestars are married to each other
+
+SELECT a.name AS Actor, b.name AS Spouse FROM moviestars
+    JOIN moviestars a
+    ON moviestars.id = a.id
+    JOIN moviestars b
+    ON moviestars.spouse_id = b.id;
